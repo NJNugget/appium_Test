@@ -1,0 +1,11 @@
+status: 200
+content-length: 85
+content-location: http://z.qyer.com/topic.php?action=sign820
+set-cookie: _guid=7144a882-2d8a-10f7-79f4-6c2d8d88daa9;
+ expires=Sat, 13-Aug-2016 10:05:03 GMT; path=/; domain=qyer.com
+server: nginx
+connection: keep-alive
+date: Fri, 14 Aug 2015 10:05:03 GMT
+content-type: text/html; charset=UTF-8
+
+{"error_code":1,"result":"error","data":{"msg":"\u8bf7\u5148\u767b\u5f55","signs":0}}

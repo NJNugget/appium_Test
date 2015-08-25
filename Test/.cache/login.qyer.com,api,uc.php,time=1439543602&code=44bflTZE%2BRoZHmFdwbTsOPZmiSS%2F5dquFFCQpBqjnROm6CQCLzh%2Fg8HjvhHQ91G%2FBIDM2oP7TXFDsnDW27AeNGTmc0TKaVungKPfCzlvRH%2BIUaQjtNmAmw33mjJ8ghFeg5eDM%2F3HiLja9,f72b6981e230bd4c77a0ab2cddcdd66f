@@ -1,0 +1,16 @@
+status: 200
+x-px: nc h0-s1009.p12-sjc ( h0-s1027.p10-pek), nc h0-s1027.p10-pek ( origin)
+content-length: 0
+content-location: http://login.qyer.com/api/uc.php?time=1439543602&code=44bflTZE%2BRoZHmFdwbTsOPZmiSS%2F5dquFFCQpBqjnROm6CQCLzh%2Fg8HjvhHQ91G%2FBIDM2oP7TXFDsnDW27AeNGTmc0TKaVungKPfCzlvRH%2BIUaQjtNmAmw33mjJ8ghFeg5eDM%2F3HiLja96ZjBYLhm0UZtnlhucSR0yqjLlB%2FotfBzppRXZfUMJEdP95b7142QkbZZ8AN
+set-cookie: cdb_sid=deleted; expires=Thu, 01-Jan-1970 00:00:01 GMT; path=/;
+ domain=.qyer.com, cdb_cookietime=1471079602;
+ expires=Sat, 13-Aug-2016 09:13:23 GMT; path=/; domain=.qyer.com,
+ cdb_auth=9eceWV5BoOgtOENBKJWUR%2BaVLuG%2BhzpasPfsP9xOU0nr6GSIzbolLSYlSluCbUxW7oBs%2Bx1KxHsQCfpbhpyT16NNWGu8mw;
+ expires=Sun, 26-Mar-2062 18:26:45 GMT; path=/; domain=.qyer.com
+server: PWS/8.1.20.22
+connection: keep-alive
+date: Fri, 14 Aug 2015 09:13:23 GMT
+p3p: CP="CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC
+ NOI DSP COR"
+content-type: text/html; charset=UTF-8
+
