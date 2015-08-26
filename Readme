@@ -13,3 +13,12 @@ QYLM_appium目前测试用例：
     9、筛选功能
 
 需要连接测试设备进行测试
+
+iOS:
+Bundle ID--com.qyer.lastminute
+UDID请注意字母小写
+
+Android:
+注意Android SDK的路径
+注意设备名称
+注意App路径
