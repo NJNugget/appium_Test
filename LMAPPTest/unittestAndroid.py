@@ -141,7 +141,7 @@ class SimpleAndroidTests(unittest.TestCase):
         #查看待付款和申请退款中
         self.scroll_screen(900, 1000, 100, 1000)
         sleep(1)
-        self.scroll_screen(900, 1000, 100, 100)     
+        self.scroll_screen(900, 1000, 100, 1000)     
     def test_check_delete_collection(self):
         sleep(8)
         #滑动屏幕用以显示更多
