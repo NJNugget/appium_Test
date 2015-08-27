@@ -26,3 +26,4 @@ Android:
 2015-08-27
 升级到Appium1.4.8以后出现iOS真机无法测试的问题，目前的解决方案是回滚至1.3.7
 1.3.7中要替换Contents/Resources/node_modules/appium/node_modules文件夹中的node-idevice文件夹
+通用方法inputString中，send_keys之前要先获取文本框的焦点
