@@ -6,7 +6,6 @@ Created on 2015年8月12日
 @author: NJNUGGET
 '''
 import unittest
-import os
 from appium import webdriver
 from time import sleep
 

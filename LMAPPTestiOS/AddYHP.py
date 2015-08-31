@@ -9,7 +9,6 @@ from appium.webdriver.common.touch_action import TouchAction
 from appium import webdriver
 import os
 from time import sleep
-from objc._objc import NULL
 
 success = True
 desired_caps = {}
