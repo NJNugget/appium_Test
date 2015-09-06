@@ -30,8 +30,6 @@ class SimpleAndroidTests(unittest.TestCase):
         desired_caps['platformVersion'] = '4.3'
         desired_caps['deviceName'] = 'Nexus 5'
         desired_caps['app'] = os.path.abspath('/Users/NJNUGGET/Documents/Python/WorkSpace/AndroidTestApp/aLAST.apk')
-
-
         self.driver = webdriver.Remote('http://172.1.7.54:3000/wd/hub', desired_caps)
         self.driver.implicitly_wait(20)
     def tearDown(self):
