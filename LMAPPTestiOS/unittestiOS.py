@@ -97,8 +97,8 @@ class SimpleIOSTests(unittest.TestCase):
         #进入分类页面
         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[2]").click()
         sleep(2)       
-        #     self.driver.find_element_by_name("Category Hotel").click()
-        self.driver.find_element_by_xpath("//UIAScrollView[1]/UIAButton[1]").click()
+        #self.driver.find_element_by_name("酒店").click()
+        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]").click()
         sleep(1)
         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAImage[1]").click()
         sleep(8)
@@ -125,6 +125,7 @@ class SimpleIOSTests(unittest.TestCase):
             sleep(1)
             self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]").click()
             sleep(1)
+            self.scroll_screen(100, 150, 100, 70)
             self.driver.find_element_by_name("Confirm Btn").click()
             sleep(1)
             self.driver.find_element_by_name("提交订单").click()
@@ -148,9 +149,9 @@ class SimpleIOSTests(unittest.TestCase):
         sleep(2)
         self.scroll_screen(300, 150, 100, 150)
         sleep(3)
-        self.driver.find_element_by_name("取消收藏").click()
+        self.driver.find_element_by_name("取消 收藏").click()
         sleep(5)
-#         
+         
     def test_check_notice(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -170,10 +171,10 @@ class SimpleIOSTests(unittest.TestCase):
         self.scroll_screen(300, 150, 100, 150)
         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[2]").click()
         self.driver.find_element_by_name("确定").click()
-  
+   
         sleep(3)
-          
            
+            
     def test_check_Qyer_choiceness(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -183,12 +184,12 @@ class SimpleIOSTests(unittest.TestCase):
         sleep(3)
         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]").click()
         sleep(3)
-          
+           
     def test_check_search(self):
         sleep(2)
         #滑动屏幕用以显示更多
         self.scroll_screen(150, 150, 170, 70)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[2]/UIAButton[2]").click()
+        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[1]/UIAButton[2]").click()
         content = self.driver.find_element_by_xpath("//UIATextField")
         content.send_keys("japan")
         self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 343, "y": 646 })
@@ -200,7 +201,7 @@ class SimpleIOSTests(unittest.TestCase):
         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[2]").click()
         sleep(2)       
         #     self.driver.find_element_by_name("Category Hotel").click()
-        self.driver.find_element_by_xpath("//UIAScrollView[1]/UIAButton[1]").click()
+        self.driver.find_element_by_name("机票").click()
         self.driver.find_element_by_name("Search Sort").click()  
         self.driver.find_element_by_name("价格从低到高").click()
         sleep(3)
