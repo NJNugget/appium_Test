@@ -15,7 +15,7 @@ class SimpleIOSTests(unittest.TestCase):
     1、启动和终止功能
     2、滚动屏幕
     3、输入文本
-    5、判断是否需要登出
+    4、判断是否需要登出
     '''
 
     def setUp(self):
@@ -63,6 +63,7 @@ class SimpleIOSTests(unittest.TestCase):
     7、选择穷游精选
     8、搜索功能
     9、筛选功能
+    10、删除订单功能
     '''
     def test_logIn(self):
         sleep(2)
@@ -105,12 +106,12 @@ class SimpleIOSTests(unittest.TestCase):
         #     self.driver.find_element_by_xpath("///UIAWindow[1]/UIAButton[2]")
         self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 311, "y": 639 })
         sleep(1)
-          
+           
 #         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[2]").click()
         self.driver.find_element_by_name("选择日期").click()
         sleep(1)
         dates = self.driver.find_elements_by_xpath("//UIATableCell/UIAButton")
-         
+          
         print(len(dates))
         for i in range(len(dates)):
             if(dates[i].is_enabled()):
@@ -151,7 +152,7 @@ class SimpleIOSTests(unittest.TestCase):
         sleep(3)
         self.driver.find_element_by_name("取消 收藏").click()
         sleep(5)
-         
+          
     def test_check_notice(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -171,10 +172,10 @@ class SimpleIOSTests(unittest.TestCase):
         self.scroll_screen(300, 150, 100, 150)
         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[2]").click()
         self.driver.find_element_by_name("确定").click()
-   
+    
         sleep(3)
-           
             
+             
     def test_check_Qyer_choiceness(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -184,7 +185,7 @@ class SimpleIOSTests(unittest.TestCase):
         sleep(3)
         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]").click()
         sleep(3)
-           
+            
     def test_check_search(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -205,6 +206,20 @@ class SimpleIOSTests(unittest.TestCase):
         self.driver.find_element_by_name("Search Sort").click()  
         self.driver.find_element_by_name("价格从低到高").click()
         sleep(3)
+    def test_check_delete_order(self):
+        sleep(2)
+        #滑动屏幕用以显示更多
+        self.scroll_screen(150, 150, 170, 70)
+        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[4]").click()
+        self.driver.find_element_by_name("我的订单").click()
+        sleep(2)
+        els = self.driver.find_elements_by_name("订单关闭")
+        els[1].click()
+        sleep(3)
+        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[1]").click()
+        self.driver.find_element_by_name("确定").click()
+        sleep(3)
+        
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(SimpleIOSTests)
     unittest.TextTestRunner(verbosity=2).run(suite)
