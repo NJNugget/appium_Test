@@ -115,7 +115,7 @@ class SimpleAndroidTests(unittest.TestCase):
         sleep(1)
         self.scroll_screen(500, 300, 500, 200)
         self.findElementByText("选择日期")
-        
+         
         flag = True
         while(flag == True):
             self.scroll_screen(500,1750,500,1)
@@ -126,7 +126,7 @@ class SimpleAndroidTests(unittest.TestCase):
                         if(self.activityIsChanged(el)):
                             flag = False
                             break
-            
+             
         self.findElementByText("提交订单")          
     def test_check_order(self):
         sleep(8)
@@ -169,7 +169,7 @@ class SimpleAndroidTests(unittest.TestCase):
         self.driver.find_element_by_id("com.qyer.android.lastminute:id/iv_notifi_delete").click()
         sleep(2)
         self.findElementByText("确定")
-         
+          
     def test_check_Qyer_choiceness(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -181,7 +181,7 @@ class SimpleAndroidTests(unittest.TestCase):
         sleep(2)
         self.driver.find_element_by_id("com.qyer.android.lastminute:id/llLeftPanle").click()
         sleep(3)
-         
+          
     def test_check_search(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -189,7 +189,7 @@ class SimpleAndroidTests(unittest.TestCase):
         self.driver.find_element_by_id("com.qyer.android.lastminute:id/ic_left_image").click()
         self.findElementByText("日本")
         sleep(3)
-         
+          
     def test_check_sort(self):
         sleep(8)
         #滑动屏幕用以显示更多
