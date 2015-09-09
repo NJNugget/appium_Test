@@ -18,7 +18,8 @@ usr_list = {'ok123ttt':'lixiang1990922',
             '281141082@qq.com':'ok123ttt',
             '7332':'gaoyuanjlu',
             'zjq910210':'jianqiao210',
-            '670655440':'kuaile.123'
+            '670655440':'kuaile.123',
+            'edie1019@sina.cn':'edie1019'
             }
 data_login = {'password':'',
                          'input':'',
