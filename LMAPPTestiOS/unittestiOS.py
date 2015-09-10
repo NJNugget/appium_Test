@@ -106,12 +106,12 @@ class SimpleIOSTests(unittest.TestCase):
         #     self.driver.find_element_by_xpath("///UIAWindow[1]/UIAButton[2]")
         self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 311, "y": 639 })
         sleep(1)
-           
+            
 #         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[2]").click()
         self.driver.find_element_by_name("选择日期").click()
         sleep(1)
         dates = self.driver.find_elements_by_xpath("//UIATableCell/UIAButton")
-          
+           
         print(len(dates))
         for i in range(len(dates)):
             if(dates[i].is_enabled()):
@@ -152,7 +152,7 @@ class SimpleIOSTests(unittest.TestCase):
         sleep(3)
         self.driver.find_element_by_name("取消 收藏").click()
         sleep(5)
-          
+           
     def test_check_notice(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -172,10 +172,10 @@ class SimpleIOSTests(unittest.TestCase):
         self.scroll_screen(300, 150, 100, 150)
         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[2]").click()
         self.driver.find_element_by_name("确定").click()
-    
+     
         sleep(3)
-            
              
+              
     def test_check_Qyer_choiceness(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -185,7 +185,7 @@ class SimpleIOSTests(unittest.TestCase):
         sleep(3)
         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]").click()
         sleep(3)
-            
+             
     def test_check_search(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -219,6 +219,15 @@ class SimpleIOSTests(unittest.TestCase):
         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[1]").click()
         self.driver.find_element_by_name("确定").click()
         sleep(3)
+    def test_reply(self):
+        sleep(5)
+        self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 188, "y": 394 })
+        sleep(3)
+        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[3]/UIAButton[1]").click()
+        inputEdit = self.driver.find_element_by_xpath("//UIAScrollView[1]/UIATextView[1]")
+        inputEdit.send_keys("12345")
+        self.driver.find_element_by_name("Confirm Btn").click()
+        sleep(5)
         
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(SimpleIOSTests)
