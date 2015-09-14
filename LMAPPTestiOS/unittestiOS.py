@@ -52,8 +52,7 @@ class QYLM171iOSTests(unittest.TestCase):
             return True
     
     '''
-    测试用例
-#     V1.7.1
+    V1.7.1测试用例
     1、登录登出
     2、添加优惠券
     3、购买流程
@@ -63,9 +62,7 @@ class QYLM171iOSTests(unittest.TestCase):
     7、选择穷游精选
     8、搜索功能
     9、筛选功能
-#     V1.7.2
-    10、删除订单功能
-    11、回复帖子
+
     '''
     def test_logIn(self):
         sleep(2)
@@ -243,6 +240,12 @@ class QYLM172iOSTests(unittest.TestCase):
             return False
         else:
             return True
+        
+    '''
+    V1.7.2测试用例
+    1、删除订单功能
+    2、回复帖子
+    '''
     def test_check_delete_order(self):
         sleep(2)
         #滑动屏幕用以显示更多
