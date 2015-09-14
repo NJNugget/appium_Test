@@ -53,17 +53,17 @@ class QYLM171iOSTests(unittest.TestCase):
     
     '''
     测试用例
-#     1.7.1
+#     V1.7.1
     1、登录登出
     2、添加优惠券
     3、购买流程
     4、查询订单
     5、删除收藏
-#     1.7.2
     6、添加删除提醒
     7、选择穷游精选
     8、搜索功能
     9、筛选功能
+#     V1.7.2
     10、删除订单功能
     11、回复帖子
     '''
@@ -208,6 +208,41 @@ class QYLM171iOSTests(unittest.TestCase):
         self.driver.find_element_by_name("Search Sort").click()  
         self.driver.find_element_by_name("价格从低到高").click()
         sleep(3)
+    
+
+class QYLM172iOSTests(unittest.TestCase):
+    def setUp(self):
+        # set up appium
+        desired_caps = {}
+        desired_caps['appium-version'] = '1.0'
+        desired_caps['platformName'] = 'iOS'
+        desired_caps['platformVersion'] = '8.3'
+        desired_caps['deviceName'] = 'iPhone 6'
+
+        self.driver = webdriver.Remote('http://172.1.7.54:3000/wd/hub', desired_caps)
+        self.driver.implicitly_wait(20)
+    def tearDown(self):
+        self.driver.quit()
+        #self.driver.find_element_by_name(name)    
+    def scroll_screen(self,x1,y1,x2,y2):
+    #TouchAction(self.driver).press(x=x1,y=y1).move_to(x=x2,y=y2).release().perform()
+        self.driver.swipe(x1, y1, x2, y2, 1000)
+        sleep(1)
+    def inputString(self,text1,text2):
+        user = self.driver.find_element_by_xpath("//UIATextField")
+        password = self.driver.find_element_by_xpath("//UIASecureTextField")
+        user.click()
+        user.send_keys(text1)    
+        password.click()
+        password.send_keys(text2)    
+    def needLogOut(self,element):
+        before = self.driver.find_element_by_xpath("//UIAStaticText[1]").get_attribute("value")
+        print(before)
+        element.click()
+        if before is None:
+            return False
+        else:
+            return True
     def test_check_delete_order(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -230,7 +265,10 @@ class QYLM171iOSTests(unittest.TestCase):
         inputEdit.send_keys("12345")
         self.driver.find_element_by_name("Confirm Btn").click()
         sleep(5)
+
         
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(QYLM171iOSTests)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    suite1 = unittest.TestLoader().loadTestsFromTestCase(QYLM171iOSTests)
+    unittest.TextTestRunner(verbosity=2).run(suite1)
+    suite2 = unittest.TestLoader().loadTestsFromTestCase(QYLM172iOSTests)
+    unittest.TextTestRunner(verbosity=2).run(suite2)
