@@ -13,7 +13,7 @@ from appium.webdriver.common.touch_action import TouchAction
 from types import NoneType
 #from LMAPPTest.AddYHP import findElementByText
 
-class SimpleAndroidTests(unittest.TestCase):
+class QYLM171AndroidTests(unittest.TestCase):
     '''
     通用功能
     1、启动和终止功能
@@ -39,9 +39,7 @@ class SimpleAndroidTests(unittest.TestCase):
     def scroll_screen(self,x1,y1,x2,y2):
     #TouchAction(self.driver).press(x=x1,y=y1).move_to(x=x2,y=y2).release().perform()
         self.driver.swipe(x1, y1, x2, y2, 1000)
-
         sleep(1)
-        
     #findElementByText_method   
     def findElementByText(self,text):
         self.driver.find_element_by_xpath("//*[@text='%s']"%text).click()
@@ -61,7 +59,7 @@ class SimpleAndroidTests(unittest.TestCase):
             return True
     
     '''
-    测试用例
+    V1.7.1测试用例
     1、添加优惠券
     2、登录登出
     3、购买流程
@@ -71,8 +69,6 @@ class SimpleAndroidTests(unittest.TestCase):
     7、选择穷游精选
     8、搜索功能
     9、筛选功能
-    10、删除订单功能
-    11、回复帖子
     '''
     def test_addYHP(self):
         sleep(8)
@@ -203,6 +199,58 @@ class SimpleAndroidTests(unittest.TestCase):
         self.driver.find_element_by_id("com.qyer.android.lastminute:id/ivOrderType").click()
         self.findElementByText("价格从低到高")
         sleep(3)
+    
+        
+class QYLM172AndroidTests(unittest.TestCase):
+    '''
+    通用功能
+    1、启动和终止功能
+    2、滚动屏幕
+    3、按照文本寻找元素
+    4、输入文本
+    5、判断activity是否改变
+    '''
+
+    def setUp(self):
+        # set up appium
+        desired_caps = {}
+        desired_caps['appium-version'] = '1.0'
+        desired_caps['platformName'] = 'Android'
+        desired_caps['platformVersion'] = '4.3'
+        desired_caps['deviceName'] = 'Nexus 5'
+        desired_caps['app'] = os.path.abspath('/Users/NJNUGGET/Documents/Python/WorkSpace/AndroidTestApp/aLAST.apk')
+        self.driver = webdriver.Remote('http://172.1.7.54:3000/wd/hub', desired_caps)
+        self.driver.implicitly_wait(10)
+    def tearDown(self):
+        self.driver.quit()
+        #self.driver.find_element_by_name(name)    
+    def scroll_screen(self,x1,y1,x2,y2):
+    #TouchAction(self.driver).press(x=x1,y=y1).move_to(x=x2,y=y2).release().perform()
+        self.driver.swipe(x1, y1, x2, y2, 1000)
+        sleep(1)
+    #findElementByText_method   
+    def findElementByText(self,text):
+        self.driver.find_element_by_xpath("//*[@text='%s']"%text).click()
+        sleep(1)
+    #inputYHPinfo
+    def inputString(self,text1,text2=""):
+        elm = self.driver.find_elements_by_xpath("//android.widget.EditText")
+        elm[0].send_keys(text1)
+        elm[1].send_keys(text2) 
+    def activityIsChanged(self,element):
+        before = self.driver.current_activity
+        element.click()
+        after = self.driver.current_activity
+        if before == after:
+            return False
+        else:
+            return True
+
+    '''
+#   V1.7.2测试用例
+    1、删除订单功能
+    2、回复帖子
+    '''
     def test_check_delete_order(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -233,7 +281,8 @@ class SimpleAndroidTests(unittest.TestCase):
         inputEdit[0].send_keys("This is a test")
         self.driver.find_element_by_xpath("//android.widget.LinearLayout[3]/android.widget.ImageView[1]").click()
         sleep(3)
-
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(SimpleAndroidTests)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    suite1 = unittest.TestLoader().loadTestsFromTestCase(QYLM171AndroidTests)
+    unittest.TextTestRunner(verbosity=2).run(suite1)
+    suite2 = unittest.TestLoader().loadTestsFromTestCase(QYLM172AndroidTests)
+    unittest.TextTestRunner(verbosity=2).run(suite2)
