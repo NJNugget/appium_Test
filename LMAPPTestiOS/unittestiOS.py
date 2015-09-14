@@ -9,7 +9,7 @@ import unittest
 from appium import webdriver
 from time import sleep
 
-class SimpleIOSTests(unittest.TestCase):
+class QYLM171iOSTests(unittest.TestCase):
     '''
     通用功能
     1、启动和终止功能
@@ -34,7 +34,6 @@ class SimpleIOSTests(unittest.TestCase):
     def scroll_screen(self,x1,y1,x2,y2):
     #TouchAction(self.driver).press(x=x1,y=y1).move_to(x=x2,y=y2).release().perform()
         self.driver.swipe(x1, y1, x2, y2, 1000)
-
         sleep(1)
     def inputString(self,text1,text2):
         user = self.driver.find_element_by_xpath("//UIATextField")
@@ -54,16 +53,19 @@ class SimpleIOSTests(unittest.TestCase):
     
     '''
     测试用例
+#     1.7.1
     1、登录登出
     2、添加优惠券
     3、购买流程
     4、查询订单
     5、删除收藏
+#     1.7.2
     6、添加删除提醒
     7、选择穷游精选
     8、搜索功能
     9、筛选功能
     10、删除订单功能
+    11、回复帖子
     '''
     def test_logIn(self):
         sleep(2)
@@ -230,5 +232,5 @@ class SimpleIOSTests(unittest.TestCase):
         sleep(5)
         
 if __name__ == '__main__':
-    suite = unittest.TestLoader().loadTestsFromTestCase(SimpleIOSTests)
+    suite = unittest.TestLoader().loadTestsFromTestCase(QYLM171iOSTests)
     unittest.TextTestRunner(verbosity=2).run(suite)
