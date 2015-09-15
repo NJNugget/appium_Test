@@ -263,11 +263,14 @@ class QYLM172iOSTests(unittest.TestCase):
         sleep(5)
         self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 188, "y": 394 })
         sleep(3)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[3]/UIAButton[1]").click()
-        inputEdit = self.driver.find_element_by_xpath("//UIAScrollView[1]/UIATextView[1]")
-        inputEdit.send_keys("12345")
-        self.driver.find_element_by_name("Confirm Btn").click()
-        sleep(5)
+        try:
+            self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[3]/UIAButton[1]").click()
+            inputEdit = self.driver.find_element_by_xpath("//UIAScrollView[1]/UIATextView[1]")
+            inputEdit.send_keys("12345")
+            self.driver.find_element_by_name("Confirm Btn").click()
+            sleep(5)
+        except:
+            print("此处并不是帖子")
 
         
 if __name__ == '__main__':
