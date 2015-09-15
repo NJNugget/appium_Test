@@ -274,7 +274,7 @@ class QYLM172iOSTests(unittest.TestCase):
 
         
 if __name__ == '__main__':
-    suite1 = unittest.TestLoader().loadTestsFromTestCase(QYLM171iOSTests)
-    unittest.TextTestRunner(verbosity=2).run(suite1)
-    suite2 = unittest.TestLoader().loadTestsFromTestCase(QYLM172iOSTests)
-    unittest.TextTestRunner(verbosity=2).run(suite2)
+    suite171 = unittest.TestLoader().loadTestsFromTestCase(QYLM171iOSTests)
+    unittest.TextTestRunner(verbosity=2).run(suite171)
+    suite172 = unittest.TestLoader().loadTestsFromTestCase(QYLM172iOSTests)
+    unittest.TextTestRunner(verbosity=2).run(suite172)
