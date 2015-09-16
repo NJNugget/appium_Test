@@ -10,7 +10,6 @@ import os
 from appium import webdriver
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
-from types import NoneType
 #from LMAPPTest.AddYHP import findElementByText
 
 class QYLM171AndroidTests(unittest.TestCase):
@@ -110,6 +109,7 @@ class QYLM171AndroidTests(unittest.TestCase):
         self.findElementByText("分类")
         self.findElementByText("酒店")
         self.driver.find_element_by_xpath("//android.widget.ListView/android.widget.LinearLayout/android.widget.FrameLayout").click()
+#         self.driver.find_element_by_xpath(xPath.saleProduct).click()
         self.findElementByText("立即预订")
         sleep(1)
         self.scroll_screen(500, 300, 500, 200)
@@ -247,7 +247,7 @@ class QYLM172AndroidTests(unittest.TestCase):
             return True
 
     '''
-#   V1.7.2测试用例
+   V1.7.2测试用例
     1、删除订单功能
     2、回复帖子
     '''
@@ -273,6 +273,7 @@ class QYLM172AndroidTests(unittest.TestCase):
                 self.scroll_screen(500, 1500, 500, 600)
     def test_reply(self):
         sleep(8)  
+        #不规则运营位的1号位
         self.driver.find_element_by_id("com.qyer.android.lastminute:id/ivSale1").click()
         sleep(2)
         try:
