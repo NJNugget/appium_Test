@@ -113,6 +113,7 @@ class QYLM171iOSTests(unittest.TestCase):
            
         print(len(dates))
         for i in range(len(dates)):
+#             此处注意enabled这个属性不能用get_attributes查看，有专用的is_enabled
             if(dates[i].is_enabled()):
                 dates[i].click()
                 break        
