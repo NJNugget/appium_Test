@@ -152,7 +152,6 @@ class QYLM171iOSTests(unittest.TestCase):
         sleep(3)
         self.driver.find_element_by_name("取消 收藏").click()
         sleep(5)
-           
     def test_check_notice(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -174,8 +173,6 @@ class QYLM171iOSTests(unittest.TestCase):
         self.driver.find_element_by_name("确定").click()
      
         sleep(3)
-             
-              
     def test_check_Qyer_choiceness(self):
         sleep(2)
         #滑动屏幕用以显示更多

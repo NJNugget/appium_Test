@@ -10,6 +10,7 @@ import os
 from appium import webdriver
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
+import xPath as GD
 #from LMAPPTest.AddYHP import findElementByText
 
 class QYLM171AndroidTests(unittest.TestCase):
@@ -45,7 +46,7 @@ class QYLM171AndroidTests(unittest.TestCase):
         sleep(1)
     #inputYHPinfo
     def inputString(self,text1,text2=""):
-        elm = self.driver.find_elements_by_xpath("//android.widget.EditText")
+        elm = self.driver.find_elements_by_xpath(GD.EIDTTEXT_ANDROID)
         elm[0].send_keys(text1)
         elm[1].send_keys(text2) 
     def activityIsChanged(self,element):
@@ -108,13 +109,13 @@ class QYLM171AndroidTests(unittest.TestCase):
         #进入分类页面
         self.findElementByText("分类")
         self.findElementByText("酒店")
-        self.driver.find_element_by_xpath("//android.widget.ListView/android.widget.LinearLayout/android.widget.FrameLayout").click()
-#         self.driver.find_element_by_xpath(xPath.saleProduct).click()
+#         self.driver.find_element_by_xpath("//android.widget.ListView/android.widget.LinearLayout/android.widget.FrameLayout").click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODECT_ANDROID).click()
         self.findElementByText("立即预订")
         sleep(1)
         self.scroll_screen(500, 300, 500, 200)
         self.findElementByText("选择日期")
-           
+            
         flag = True
         while(flag == True):
             self.scroll_screen(500,1750,500,1)
@@ -125,7 +126,7 @@ class QYLM171AndroidTests(unittest.TestCase):
                         if(self.activityIsChanged(el)):
                             flag = False
                             break
-               
+                
         self.findElementByText("提交订单")          
     def test_check_order(self):
         sleep(8)
@@ -148,7 +149,7 @@ class QYLM171AndroidTests(unittest.TestCase):
         #长按第一个收藏，并点击删除
         action1 = TouchAction(self.driver)  
 #         el = self.driver.find_element_by_xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.FrameLayout[1]")
-        el = self.driver.find_element_by_id("com.qyer.android.lastminute:id/deal_layout")
+        el = self.driver.find_element_by_id(GD.COLLECT_PRODUCT_ID_ANDROID)
         action1.long_press(el).wait(1500).perform()
         self.findElementByText("确定")
     def test_check_notice(self):
@@ -158,14 +159,14 @@ class QYLM171AndroidTests(unittest.TestCase):
         #进入我的提醒页面
         self.findElementByText("我的")
         self.findElementByText("我的提醒")
-        els = self.driver.find_elements_by_xpath("//android.widget.ImageView")
+        els = self.driver.find_elements_by_xpath(GD.NOTICE_IMAGE_ANDROID)
         els[1].click()
         sleep(1)
         self.findElementByText("折扣类型")
         self.findElementByText("机票")
         self.findElementByText("确定")
         sleep(3)
-        self.driver.find_element_by_id("com.qyer.android.lastminute:id/iv_notifi_delete").click()
+        self.driver.find_element_by_id(GD.NOTICE_PRODUCT_ID_ANDROID).click()
         sleep(2)
         self.findElementByText("确定")
             
@@ -176,11 +177,12 @@ class QYLM171AndroidTests(unittest.TestCase):
         #进入我的提醒页面
         self.findElementByText("穷游精选")
         sleep(5)
-        self.driver.find_element_by_xpath("//android.widget.ListView[1]/android.widget.FrameLayout[1]").click()
+#         self.driver.find_element_by_xpath("//android.widget.ListView[1]/android.widget.FrameLayout[1]").click()
+        self.driver.find_element_by_xpath(GD.SELECTED_PRODUCT_ANDROID).click()
         sleep(2)
-        self.driver.find_element_by_id("com.qyer.android.lastminute:id/llLeftPanle").click()
+        self.driver.find_element_by_id(GD.SELECTED_PRODUCT_LEFT_ID_ANDROID).click()
         sleep(3)
-            
+             
     def test_check_search(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -188,7 +190,7 @@ class QYLM171AndroidTests(unittest.TestCase):
         self.driver.find_element_by_id("com.qyer.android.lastminute:id/ic_left_image").click()
         self.findElementByText("日本")
         sleep(3)
-            
+             
     def test_check_sort(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -234,7 +236,7 @@ class QYLM172AndroidTests(unittest.TestCase):
         sleep(1)
     #inputYHPinfo
     def inputString(self,text1,text2=""):
-        elm = self.driver.find_elements_by_xpath("//android.widget.EditText")
+        elm = self.driver.find_elements_by_xpath(GD.EIDTTEXT_ANDROID)
         elm[0].send_keys(text1)
         elm[1].send_keys(text2) 
     def activityIsChanged(self,element):
@@ -281,7 +283,7 @@ class QYLM172AndroidTests(unittest.TestCase):
             inputEdit = self.driver.find_elements_by_class_name("android.widget.EditText")
             inputEdit[0].click()
             inputEdit[0].send_keys("This is a test")
-            self.driver.find_element_by_xpath("//android.widget.LinearLayout[3]/android.widget.ImageView[1]").click()
+            self.driver.find_element_by_xpath(GD.NOTICE_IMAGE_ANDROID).click()
             sleep(3)
         except:
             print("此处不是帖子")
