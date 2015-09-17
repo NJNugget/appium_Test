@@ -11,13 +11,13 @@ from time import sleep
 import xPath as GD
 
 class QYLM171iOSTests(unittest.TestCase):
-    '''
-    通用功能
-    1、启动和终止功能
-    2、滚动屏幕
-    3、输入文本
-    4、判断是否需要登出
-    '''
+# ===================================
+#     通用功能
+#     1、启动和终止功能
+#     2、滚动屏幕
+#     3、输入文本
+#     4、判断是否需要登出
+# ===================================
 
     def setUp(self):
         # set up appium
@@ -52,19 +52,28 @@ class QYLM171iOSTests(unittest.TestCase):
         else:
             return True
     
-    '''
-    V1.7.1测试用例
-    1、登录登出
-    2、添加优惠券
-    3、购买流程
-    4、查询订单
-    5、删除收藏
-    6、添加删除提醒
-    7、选择穷游精选
-    8、搜索功能
-    9、筛选功能
-
-    '''
+# ===================================
+#     V1.7.1测试用例
+#     1、登录登出
+#     2、添加优惠券
+#     3、购买流程
+#     4、查询订单
+#     5、删除收藏
+#     6、添加删除提醒
+#     7、选择穷游精选
+#     8、搜索功能
+#     9、筛选功能
+# ===================================
+# ===================================
+# ===================================
+# ===================================
+# （1）登录登出
+# 滑动屏幕激活
+# 进入［我的］页面
+# 点击头像，验证是否需要先登出，若需要则执行登出操作
+# 输入用户名“ok123ttt”密码“lixiang1990922”
+# 点击登录按钮
+# ===================================
     def test_logIn(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -80,7 +89,16 @@ class QYLM171iOSTests(unittest.TestCase):
             el.click()
         self.inputString("ok123ttt", "lixiang1990922")
         self.driver.find_element_by_xpath(GD.MINE_QYLOGIN_BUTTON_IOS).click()
-        sleep(2)            
+        sleep(2)   
+# ===================================
+# （2）添加优惠券
+# 滑动屏幕激活
+# 进入［我的］页面
+# 点击［我的优惠］按钮
+# 点击［添加优惠券］按钮
+# 输入优惠券号“YHP0003200002459”，优惠券密码“123456”
+# 点击［加入我的优惠券］按钮
+# ===================================
     def test_addYHP(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -92,6 +110,17 @@ class QYLM171iOSTests(unittest.TestCase):
         self.inputString("YHP0003200002459","123456")
         self.driver.find_element_by_name("加入我的优惠券").click()
         sleep(2)        
+# ===================================
+# （3）购买流程
+# 滑动屏幕激活
+# 点击［分类］按钮
+# 点击［机票］类目按钮
+# 点击列表中第一个折扣
+# 点击［立即预订］按钮
+# 点击［选择日期］按钮
+# 选择一个有产品的日期
+# 判断是否需要添加旅客，如若不需要，直接点击［提交订单］按钮
+# ===================================
     def test_buyAtOnce(self):
         sleep(2)
         self.scroll_screen(150, 150, 170, 70)
@@ -119,9 +148,6 @@ class QYLM171iOSTests(unittest.TestCase):
                 break        
             #         scroll_screen(200, 500, 200, 300)
         try:
-            self.driver.find_element_by_name("提交订单").click()
-            sleep(2)
-        except:
             self.driver.find_element_by_name("点击添加旅客").click()
             sleep(1)
             self.driver.find_element_by_xpath(GD.PASSANGER_CHECKBOX_IOS).click()
@@ -130,7 +156,17 @@ class QYLM171iOSTests(unittest.TestCase):
             self.driver.find_element_by_name("Confirm Btn").click()
             sleep(1)
             self.driver.find_element_by_name("提交订单").click()
-            sleep(2)            
+            sleep(2)
+        except:
+            self.driver.find_element_by_name("提交订单").click()
+            sleep(2)           
+# ===================================
+# （4）查询订单
+# 滑动屏幕激活
+# 点击［我的］按钮
+# 点击［我的订单］按钮
+# 滑动两次检查订单是否加载成功
+# ===================================
     def test_check_order(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -141,6 +177,13 @@ class QYLM171iOSTests(unittest.TestCase):
         self.scroll_screen(300, 150, 100, 150)
         sleep(1)
         self.scroll_screen(300, 150, 100, 150)
+# ===================================
+# （5）删除收藏
+# 滑动屏幕激活
+# 点击［我的］按钮
+# 滑动已收藏折扣
+# 点击［取消收藏］按钮
+# ===================================
     def test_check_delete_colletion(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -152,6 +195,18 @@ class QYLM171iOSTests(unittest.TestCase):
         sleep(3)
         self.driver.find_element_by_name("取消 收藏").click()
         sleep(5)
+# ===================================
+# （6）添加删除提醒
+# 滑动屏幕激活
+# 点击［我的］按钮
+# 点击［我的提醒］按钮
+# 点击右上角添加提醒按钮
+# 点击［旅行时间］按钮
+# 选择［1-3个月］
+# 滑动新添加的提醒
+# 点击［删除］按钮
+# 点击［确定］按钮
+# ===================================
     def test_check_notice(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -171,8 +226,14 @@ class QYLM171iOSTests(unittest.TestCase):
         self.scroll_screen(300, 150, 100, 150)
         self.driver.find_element_by_xpath(GD.NOTICE_DELETE_IOS).click()
         self.driver.find_element_by_name("确定").click()
-      
         sleep(3)
+        
+# ===================================
+# （7）选择穷游精选
+# 滑动屏幕激活
+# 点击［穷游精选］按钮
+# 点击选择精选中的折扣
+# ===================================
     def test_check_Qyer_choiceness(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -183,6 +244,13 @@ class QYLM171iOSTests(unittest.TestCase):
         self.driver.find_element_by_xpath(GD.SELECTED_PRODUCT_IOS).click()
         sleep(3)
               
+# ===================================
+# （8）搜索功能
+# 滑动屏幕激活
+# 点击搜索按钮
+# 输入“japan”
+# 点击确认
+# ===================================
     def test_check_search(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -192,6 +260,15 @@ class QYLM171iOSTests(unittest.TestCase):
         content.send_keys("japan")
         self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 343, "y": 646 })
         sleep(3)
+
+# ===================================
+# （9）排序功能
+# 滑动屏幕激活
+# 点击［分类］按钮
+# 点击［机票］类目按钮
+# 点击右上方筛选按钮
+# 选择“价格从低到高”
+# ===================================
     def test_check_sort(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -239,11 +316,22 @@ class QYLM172iOSTests(unittest.TestCase):
         else:
             return True
         
-    '''
-    V1.7.2测试用例
-    1、删除订单功能
-    2、回复帖子
-    '''
+# ===================================
+#     V1.7.2测试用例
+#     1、删除订单功能
+#     2、回复帖子
+# ===================================
+# ===================================
+# ===================================
+# ===================================
+# （1）删除订单功能
+# 滑动屏幕激活
+# 点击［我的］按钮
+# 点击［我的订单］按钮
+# 点击状态为［订单关闭］的订单
+# 点击［删除订单］按钮
+# 点击［确定］按钮
+# ===================================
     def test_check_delete_order(self):
         sleep(2)
         #滑动屏幕用以显示更多
@@ -257,6 +345,14 @@ class QYLM172iOSTests(unittest.TestCase):
         self.driver.find_element_by_xpath(GD.ORDER_DELETE_IOS).click()
         self.driver.find_element_by_name("确定").click()
         sleep(3)
+# ===================================
+# （2）回复功能
+# 点击不规则运营位专题
+# 如果运营位为帖子，点击［回复楼主］按钮
+# 在回复内容框里输入“12345”
+# 点击右上角确认回复按钮
+# 如果不是帖子，控制台输出“此处不是帖子”
+# ===================================
     def test_reply(self):
         sleep(5)
         self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 188, "y": 394 })

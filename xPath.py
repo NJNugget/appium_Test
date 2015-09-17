@@ -20,7 +20,7 @@ SELECTED_PRODUCT_ANDROID = "//android.widget.ListView[1]/android.widget.FrameLay
 # ===================================
 COLLECT_PRODUCT_ID_ANDROID = "com.qyer.android.lastminute:id/deal_layout"
 IRREGULAR_IMAGE_1_ID_ANDROID = "com.qyer.android.lastminute:id/ivSale1"
-NOTICE_PRODUCT_ID_ANDROID = "com.qyer.android.lastminute:id/iv_notifi_delete"
+NOTICE_DELETE_ID_ANDROID = "com.qyer.android.lastminute:id/iv_notifi_delete"
 SEARCH_IMAGE_ID_ANDROID = "com.qyer.android.lastminute:id/ic_left_image"
 SELECTED_PRODUCT_LEFT_ID_ANDROID = "com.qyer.android.lastminute:id/llLeftPanle"
 SORT_BUTTON_ID_ANDROID = "com.qyer.android.lastminute:id/ivOrderType"

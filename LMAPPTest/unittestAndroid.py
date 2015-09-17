@@ -11,17 +11,16 @@ from appium import webdriver
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
 import xPath as GD
-#from LMAPPTest.AddYHP import findElementByText
 
 class QYLM171AndroidTests(unittest.TestCase):
-    '''
-    通用功能
-    1、启动和终止功能
-    2、滚动屏幕
-    3、按照文本寻找元素
-    4、输入文本
-    5、判断activity是否改变
-    '''
+# ===================================
+#     通用功能
+#     1、启动和终止功能
+#     2、滚动屏幕
+#     3、按照文本寻找元素
+#     4、输入文本
+#     5、判断activity是否改变
+# ===================================
 
     def setUp(self):
         # set up appium
@@ -58,18 +57,30 @@ class QYLM171AndroidTests(unittest.TestCase):
         else:
             return True
     
-    '''
-    V1.7.1测试用例
-    1、添加优惠券
-    2、登录登出
-    3、购买流程
-    4、查询订单
-    5、删除收藏
-    6、添加删除提醒
-    7、选择穷游精选
-    8、搜索功能
-    9、筛选功能
-    '''
+# ===================================
+#     V1.7.1测试用例
+#     1、添加优惠券
+#     2、登录登出
+#     3、购买流程
+#     4、查询订单
+#     5、删除收藏
+#     6、添加删除提醒
+#     7、选择穷游精选
+#     8、搜索功能
+#     9、筛选功能
+# ===================================
+# ===================================
+# ===================================
+# ===================================
+# ===================================
+# （1）添加优惠券
+# 滑动屏幕激活
+# 进入［我的］页面
+# 点击［我的优惠］按钮
+# 点击［添加优惠券］按钮
+# 输入优惠券号“YHP0009300002785”，优惠券密码“123962”
+# 点击［加入我的优惠券］按钮
+# ===================================
     def test_addYHP(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -81,6 +92,14 @@ class QYLM171AndroidTests(unittest.TestCase):
         #输入优惠券信息
         self.inputString("YHP0009300002785", "123962")
         self.findElementByText("加入我的优惠券")
+# ===================================
+# （2）登录登出
+# 滑动屏幕激活
+# 进入［我的］页面
+# 点击头像，验证是否需要先登出，若需要则执行登出操作
+# 输入用户名“1234”密码“1234”
+# 点击登录按钮
+# ===================================
     def test_logIn(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -102,6 +121,19 @@ class QYLM171AndroidTests(unittest.TestCase):
         self.inputString("1234", "1234")
         self.driver.find_elements_by_xpath("//*[@text='登录']")[1].click()
         sleep(2)
+        
+        
+# ===================================
+# （3）购买流程
+# 滑动屏幕激活
+# 点击［分类］按钮
+# 点击［酒店］类目按钮
+# 点击列表中第一个折扣
+# 点击［立即预订］按钮
+# 点击［选择日期］按钮
+# 选择一个有产品的日期
+# 判断是否需要添加旅客，如若不需要，直接点击［提交订单］按钮
+# ===================================
     def test_buyAtOnce(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -126,8 +158,14 @@ class QYLM171AndroidTests(unittest.TestCase):
                         if(self.activityIsChanged(el)):
                             flag = False
                             break
-                
-        self.findElementByText("提交订单")          
+        self.findElementByText("提交订单")
+# ===================================
+# （4）查询订单
+# 滑动屏幕激活
+# 点击［我的］按钮
+# 点击［我的订单］按钮
+# 滑动两次检查订单是否加载成功
+# ===================================          
     def test_check_order(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -138,7 +176,14 @@ class QYLM171AndroidTests(unittest.TestCase):
         #查看待付款和申请退款中
         self.scroll_screen(900, 1000, 100, 1000)
         sleep(1)
-        self.scroll_screen(900, 1000, 100, 1000)     
+        self.scroll_screen(900, 1000, 100, 1000)  
+# ===================================
+# （5）删除收藏
+# 滑动屏幕激活
+# 点击［我的］按钮
+# 滑动已收藏折扣
+# 点击［取消收藏］按钮
+# ==================================   
     def test_check_delete_collection(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -152,6 +197,17 @@ class QYLM171AndroidTests(unittest.TestCase):
         el = self.driver.find_element_by_id(GD.COLLECT_PRODUCT_ID_ANDROID)
         action1.long_press(el).wait(1500).perform()
         self.findElementByText("确定")
+# ===================================
+# （6）添加删除提醒
+# 滑动屏幕激活
+# 点击［我的］按钮
+# 点击［我的提醒］按钮
+# 点击右上角添加提醒按钮
+# 点击［折扣类型］按钮
+# 选择［机票］类型
+# 点击提醒右上方删除按钮
+# 点击［确定］按钮
+# ===================================
     def test_check_notice(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -166,10 +222,15 @@ class QYLM171AndroidTests(unittest.TestCase):
         self.findElementByText("机票")
         self.findElementByText("确定")
         sleep(3)
-        self.driver.find_element_by_id(GD.NOTICE_PRODUCT_ID_ANDROID).click()
+        self.driver.find_element_by_id(GD.NOTICE_DELETE_ID_ANDROID).click()
         sleep(2)
         self.findElementByText("确定")
-            
+# ===================================
+# （7）选择穷游精选
+# 滑动屏幕激活
+# 点击［穷游精选］按钮
+# 点击选择精选中的折扣
+# ==================================
     def test_check_Qyer_choiceness(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -182,7 +243,12 @@ class QYLM171AndroidTests(unittest.TestCase):
         sleep(2)
         self.driver.find_element_by_id(GD.SELECTED_PRODUCT_LEFT_ID_ANDROID).click()
         sleep(3)
-             
+# ===================================
+# （8）搜索功能
+# 滑动屏幕激活
+# 点击搜索按钮
+# 选择热门搜索词“日本”
+# ===================================
     def test_check_search(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -190,7 +256,14 @@ class QYLM171AndroidTests(unittest.TestCase):
         self.driver.find_element_by_id(GD.SEARCH_IMAGE_ID_ANDROID).click()
         self.findElementByText("日本")
         sleep(3)
-             
+# ===================================
+# （9）排序功能
+# 滑动屏幕激活
+# 点击［分类］按钮
+# 点击［酒店］类目按钮
+# 点击右上方筛选按钮
+# 选择“价格从低到高”
+# ===================================
     def test_check_sort(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -204,14 +277,14 @@ class QYLM171AndroidTests(unittest.TestCase):
     
         
 class QYLM172AndroidTests(unittest.TestCase):
-    '''
-    通用功能
-    1、启动和终止功能
-    2、滚动屏幕
-    3、按照文本寻找元素
-    4、输入文本
-    5、判断activity是否改变
-    '''
+# ===================================
+#     通用功能
+#     1、启动和终止功能
+#     2、滚动屏幕
+#     3、按照文本寻找元素
+#     4、输入文本
+#     5、判断activity是否改变
+# ===================================
 
     def setUp(self):
         # set up appium
@@ -248,11 +321,23 @@ class QYLM172AndroidTests(unittest.TestCase):
         else:
             return True
 
-    '''
-   V1.7.2测试用例
-    1、删除订单功能
-    2、回复帖子
-    '''
+# ===================================
+#    V1.7.2测试用例
+#     1、删除订单功能
+#     2、回复帖子
+# ===================================
+# ===================================
+# ===================================
+# ===================================
+# ===================================
+# （1）删除订单功能
+# 滑动屏幕激活
+# 点击［我的］按钮
+# 点击［我的订单］按钮
+# 点击状态为［订单关闭］的订单
+# 点击［删除订单］按钮
+# 点击［确定］按钮
+# ===================================
     def test_check_delete_order(self):
         sleep(8)
         #滑动屏幕用以显示更多
@@ -273,6 +358,14 @@ class QYLM172AndroidTests(unittest.TestCase):
                 flag = False
             except:
                 self.scroll_screen(500, 1500, 500, 600)
+# ===================================
+# （2）回复功能
+# 点击不规则运营位专题
+# 如果运营位为帖子，点击［回复楼主］按钮
+# 在回复内容框里输入“This is a test”
+# 点击右上角确认回复按钮
+# 如果不是帖子，控制台输出“此处不是帖子”
+# ===================================
     def test_reply(self):
         sleep(8)  
         #不规则运营位的1号位
