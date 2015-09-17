@@ -8,6 +8,7 @@ Created on 2015年8月12日
 import unittest
 from appium import webdriver
 from time import sleep
+import xPath as GD
 
 class QYLM171iOSTests(unittest.TestCase):
     '''
@@ -70,22 +71,22 @@ class QYLM171iOSTests(unittest.TestCase):
         self.scroll_screen(150, 150, 170, 70)
         #进入我的页面
         #self.driver.find_element_by_xpath("//UIAWindow[1]/UIAButton[4]").click()
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[4]").click()
+        self.driver.find_element_by_xpath(GD.MINE_BUTTON_IOS).click()
         sleep(1)
-        el = self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]")
+        el = self.driver.find_element_by_xpath(GD.MINE_USERNAME_IOS)
         if(self.needLogOut(el)==True):
             self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 351, "y": 41 })
             self.driver.switch_to_alert().accept()
             el.click()
         self.inputString("ok123ttt", "lixiang1990922")
-        self.driver.find_element_by_xpath("//*[@label='QYLoginButton']").click()
+        self.driver.find_element_by_xpath(GD.MINE_QYLOGIN_BUTTON_IOS).click()
         sleep(2)            
     def test_addYHP(self):
         sleep(2)
         #滑动屏幕用以显示更多
         self.scroll_screen(150, 150, 170, 70)
         #进入我的页面
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[4]").click()
+        self.driver.find_element_by_xpath(GD.MINE_YHP_IOS).click()
         self.driver.find_element_by_name("我的优惠").click()
         self.driver.find_element_by_name("添加优惠券").click()
         self.inputString("YHP0003200002459","123456")
@@ -95,21 +96,20 @@ class QYLM171iOSTests(unittest.TestCase):
         sleep(2)
         self.scroll_screen(150, 150, 170, 70)
         #进入分类页面
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[2]").click()
+        self.driver.find_element_by_xpath(GD.CATEGORY_BUTTON_IOS).click()
         sleep(2)       
         #self.driver.find_element_by_name("酒店").click()
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAStaticText[1]").click()
+        self.driver.find_element_by_xpath(GD.CATEGORY_FLIGHT_IOS).click()
         sleep(1)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAScrollView[2]/UIAImage[1]").click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS).click()
         sleep(8)
-        #     self.driver.find_element_by_xpath("///UIAWindow[1]/UIAButton[2]")
         self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 311, "y": 639 })
         sleep(1)
             
-#         self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[3]/UIAStaticText[2]").click()
+#         self.driver.find_element_by_xpath(GD.SUBMIT_DATE_IOS).click()
         self.driver.find_element_by_name("选择日期").click()
         sleep(1)
-        dates = self.driver.find_elements_by_xpath("//UIATableCell/UIAButton")
+        dates = self.driver.find_elements_by_xpath(GD.CALENDAR_BUTTON_IOS)
            
         print(len(dates))
         for i in range(len(dates)):
@@ -124,7 +124,7 @@ class QYLM171iOSTests(unittest.TestCase):
         except:
             self.driver.find_element_by_name("点击添加旅客").click()
             sleep(1)
-            self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[1]").click()
+            self.driver.find_element_by_xpath(GD.PASSANGER_CHECKBOX_IOS).click()
             sleep(1)
             self.scroll_screen(100, 150, 100, 70)
             self.driver.find_element_by_name("Confirm Btn").click()
@@ -135,7 +135,7 @@ class QYLM171iOSTests(unittest.TestCase):
         sleep(2)
         #滑动屏幕用以显示更多
         self.scroll_screen(150, 150, 170, 70)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[4]").click()
+        self.driver.find_element_by_xpath(GD.MINE_BUTTON_IOS).click()
         self.driver.find_element_by_name("我的订单").click()
         sleep(2)
         self.scroll_screen(300, 150, 100, 150)
@@ -145,7 +145,7 @@ class QYLM171iOSTests(unittest.TestCase):
         sleep(2)
         #滑动屏幕用以显示更多
         self.scroll_screen(150, 150, 170, 70)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[4]").click()
+        self.driver.find_element_by_xpath(GD.MINE_BUTTON_IOS).click()
         self.driver.find_element_by_name("我的收藏").click()
         sleep(2)
         self.scroll_screen(300, 150, 100, 150)
@@ -156,38 +156,38 @@ class QYLM171iOSTests(unittest.TestCase):
         sleep(2)
         #滑动屏幕用以显示更多
         self.scroll_screen(150, 150, 170, 70)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[4]").click()
+        self.driver.find_element_by_xpath(GD.MINE_BUTTON_IOS).click()
 #         self.driver.find_element_by_name("Tab Mine").click()
         self.driver.find_element_by_name("我的提醒").click()
         sleep(2)
         self.driver.find_element_by_name("My Remind Add").click()
         sleep(2)
         self.driver.find_element_by_name("旅行时间").click()
-        self.driver.find_element_by_xpath("//UIAScrollView[1]/UIAImage[3]").click()
+        self.driver.find_element_by_xpath(GD.NOTICE_TRAVELTIME_IOS).click()
         #//UIAApplication[1]/UIAWindow[1]/UIAScrollView[1]/UIAImage[3]/UIAStaticText[1]
         sleep(1)
         self.driver.find_element_by_name("确定").click()
         sleep(8)
         self.scroll_screen(300, 150, 100, 150)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]/UIAButton[2]").click()
+        self.driver.find_element_by_xpath(GD.NOTICE_DELETE_IOS).click()
         self.driver.find_element_by_name("确定").click()
-     
+      
         sleep(3)
     def test_check_Qyer_choiceness(self):
         sleep(2)
         #滑动屏幕用以显示更多
         self.scroll_screen(150, 150, 170, 70)
 #         self.driver.find_element_by_name("Tab Discover").click()
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[3]").click()
+        self.driver.find_element_by_xpath(GD.SELECTED_BUTTON_IOS).click()
         sleep(3)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[1]").click()
+        self.driver.find_element_by_xpath(GD.SELECTED_PRODUCT_IOS).click()
         sleep(3)
-             
+              
     def test_check_search(self):
         sleep(2)
         #滑动屏幕用以显示更多
         self.scroll_screen(150, 150, 170, 70)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[1]/UIAButton[2]").click()
+        self.driver.find_element_by_xpath(GD.SEARCH_BUTTON_IOS).click()
         content = self.driver.find_element_by_xpath("//UIATextField")
         content.send_keys("japan")
         self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 343, "y": 646 })
@@ -196,7 +196,7 @@ class QYLM171iOSTests(unittest.TestCase):
         sleep(2)
         #滑动屏幕用以显示更多
         self.scroll_screen(150, 150, 170, 70)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[2]").click()
+        self.driver.find_element_by_xpath(GD.CATEGORY_BUTTON_IOS).click()
         sleep(2)       
         #     self.driver.find_element_by_name("Category Hotel").click()
         self.driver.find_element_by_name("机票").click()
@@ -248,13 +248,13 @@ class QYLM172iOSTests(unittest.TestCase):
         sleep(2)
         #滑动屏幕用以显示更多
         self.scroll_screen(150, 150, 170, 70)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[4]").click()
+        self.driver.find_element_by_xpath(GD.MINE_BUTTON_IOS).click()
         self.driver.find_element_by_name("我的订单").click()
         sleep(2)
         els = self.driver.find_elements_by_name("订单关闭")
         els[1].click()
         sleep(3)
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAButton[1]").click()
+        self.driver.find_element_by_xpath(GD.ORDER_DELETE_IOS).click()
         self.driver.find_element_by_name("确定").click()
         sleep(3)
     def test_reply(self):
@@ -262,8 +262,8 @@ class QYLM172iOSTests(unittest.TestCase):
         self.driver.execute_script("mobile: tap", {"tapCount": 1, "touchCount": 1, "duration": 0.5, "x": 188, "y": 394 })
         sleep(3)
         try:
-            self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIAImage[3]/UIAButton[1]").click()
-            inputEdit = self.driver.find_element_by_xpath("//UIAScrollView[1]/UIATextView[1]")
+            self.driver.find_element_by_xpath(GD.REPLY_BUTTON_IOS).click()
+            inputEdit = self.driver.find_element_by_xpath(GD.REPLY_TEXTFIELD_IOS)
             inputEdit.send_keys("12345")
             self.driver.find_element_by_name("Confirm Btn").click()
             sleep(5)

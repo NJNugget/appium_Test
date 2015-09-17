@@ -187,7 +187,7 @@ class QYLM171AndroidTests(unittest.TestCase):
         sleep(8)
         #滑动屏幕用以显示更多
         self.scroll_screen(500, 500, 700, 70)
-        self.driver.find_element_by_id("com.qyer.android.lastminute:id/ic_left_image").click()
+        self.driver.find_element_by_id(GD.SEARCH_IMAGE_ID_ANDROID).click()
         self.findElementByText("日本")
         sleep(3)
              
@@ -198,7 +198,7 @@ class QYLM171AndroidTests(unittest.TestCase):
         #进入分类页面
         self.findElementByText("分类")
         self.findElementByText("酒店")
-        self.driver.find_element_by_id("com.qyer.android.lastminute:id/ivOrderType").click()
+        self.driver.find_element_by_id(GD.SORT_BUTTON_ID_ANDROID).click()
         self.findElementByText("价格从低到高")
         sleep(3)
     
@@ -276,7 +276,7 @@ class QYLM172AndroidTests(unittest.TestCase):
     def test_reply(self):
         sleep(8)  
         #不规则运营位的1号位
-        self.driver.find_element_by_id("com.qyer.android.lastminute:id/ivSale1").click()
+        self.driver.find_element_by_id(GD.IRREGULAR_IMAGE_1_ID_ANDROID).click()
         sleep(2)
         try:
             self.findElementByText("回复楼主")
