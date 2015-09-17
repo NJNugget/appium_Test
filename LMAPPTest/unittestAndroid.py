@@ -11,7 +11,6 @@ from appium import webdriver
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
 import xPath as GD
-
 class QYLM171AndroidTests(unittest.TestCase):
 # ===================================
 #     通用功能
@@ -328,8 +327,6 @@ class QYLM172AndroidTests(unittest.TestCase):
 # ===================================
 # ===================================
 # ===================================
-# ===================================
-# ===================================
 # （1）删除订单功能
 # 滑动屏幕激活
 # 点击［我的］按钮
@@ -367,8 +364,10 @@ class QYLM172AndroidTests(unittest.TestCase):
 # 如果不是帖子，控制台输出“此处不是帖子”
 # ===================================
     def test_reply(self):
+        print(GD.IRREGULAR_IMAGE_1_ID_ANDROID)
         sleep(8)  
         #不规则运营位的1号位
+        print(GD.IRREGULAR_IMAGE_1_ID_ANDROID)
         self.driver.find_element_by_id(GD.IRREGULAR_IMAGE_1_ID_ANDROID).click()
         sleep(2)
         try:

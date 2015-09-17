@@ -9,7 +9,6 @@ import unittest
 from appium import webdriver
 from time import sleep
 import xPath as GD
-
 class QYLM171iOSTests(unittest.TestCase):
 # ===================================
 #     通用功能
