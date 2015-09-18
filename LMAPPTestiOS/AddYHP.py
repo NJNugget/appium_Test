@@ -5,9 +5,7 @@ Created on 2015年8月11日
 
 @author: NJNUGGET
 '''
-from appium.webdriver.common.touch_action import TouchAction
 from appium import webdriver
-import os
 from time import sleep
 
 success = True
