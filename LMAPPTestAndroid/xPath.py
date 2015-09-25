@@ -13,7 +13,8 @@ NOTICE_IMAGE_ANDROID = "//android.widget.ImageView"
 REPLY_BUTTON_ANDROID = "//android.widget.LinearLayout[3]/android.widget.ImageView[1]"
 SALE_PRODECT_ANDROID = "//android.widget.ListView/android.widget.LinearLayout/android.widget.FrameLayout"
 SELECTED_PRODUCT_ANDROID = "//android.widget.ListView[1]/android.widget.FrameLayout[1]"
-
+OPREATION_IMAGE_ADNROID = "//android.support.v4.view.ViewPager[1]/android.widget.FrameLayout[1]/android.widget.ImageView[1]"
+SHARE_TOPIC_BUTTON_ANDROID = "//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.LinearLayout[1]/android.widget.LinearLayout[3]/android.widget.ImageView[1]"
 
 # ===================================
 # ANDROID控件ID

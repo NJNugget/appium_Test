@@ -365,9 +365,55 @@ class QYLM172iOSTests(unittest.TestCase):
         except:
             print("此处并不是帖子")
 
+
+class QYLM173iOSTests(unittest.TestCase):
+    def setUp(self):
+        # set up appium
+        desired_caps = {}
+        desired_caps['appium-version'] = '1.0'
+        desired_caps['platformName'] = 'iOS'
+        desired_caps['platformVersion'] = '8.3'
+        desired_caps['deviceName'] = 'iPhone 6'
+
+        self.driver = webdriver.Remote('http://172.1.7.54:3000/wd/hub', desired_caps)
+        self.driver.implicitly_wait(20)
+    def tearDown(self):
+        self.driver.quit()
+        #self.driver.find_element_by_name(name)    
+    def scroll_screen(self,x1,y1,x2,y2):
+    #TouchAction(self.driver).press(x=x1,y=y1).move_to(x=x2,y=y2).release().perform()
+        self.driver.swipe(x1, y1, x2, y2, 1000)
+        sleep(1)
+    def inputString(self,text1,text2):
+        user = self.driver.find_element_by_xpath("//UIATextField")
+        password = self.driver.find_element_by_xpath("//UIASecureTextField")
+        user.click()
+        user.send_keys(text1)    
+        password.click()
+        password.send_keys(text2)    
+    def needLogOut(self,element):
+        before = self.driver.find_element_by_xpath("//UIAStaticText[1]").get_attribute("value")
+        print(before)
+        element.click()
+        if before is None:
+            return False
+        else:
+            return True
         
+# ===================================
+#     V1.7.3测试用例
+#     1、商铺页面
+#     2、咨询功能
+# ===================================
+# ===================================
+# ===================================
+# ===================================
+        
+
 if __name__ == '__main__':
-    suite171 = unittest.TestLoader().loadTestsFromTestCase(QYLM171iOSTests)
-    unittest.TextTestRunner(verbosity=2).run(suite171)
-    suite172 = unittest.TestLoader().loadTestsFromTestCase(QYLM172iOSTests)
-    unittest.TextTestRunner(verbosity=2).run(suite172)
+#     suite171 = unittest.TestLoader().loadTestsFromTestCase(QYLM171iOSTests)
+#     unittest.TextTestRunner(verbosity=2).run(suite171)
+#     suite172 = unittest.TestLoader().loadTestsFromTestCase(QYLM172iOSTests)
+#     unittest.TextTestRunner(verbosity=2).run(suite172)
+    suite173 = unittest.TestLoader().loadTestsFromTestCase(QYLM173iOSTests)
+    unittest.TextTestRunner(verbosity=2).run(suite173)
