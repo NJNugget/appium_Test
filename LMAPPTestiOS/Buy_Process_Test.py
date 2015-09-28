@@ -31,8 +31,9 @@ class QYBuy_Process(QYSettings_iOS):
         #self.driver.find_element_by_name("酒店").click()
         self.driver.find_element_by_xpath(GD.CATEGORY_FLIGHT_IOS).click()
         sleep(1)
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS).click()
         model = QYBuy_iOS()
-        model.Buy(self.driver)
+        model.Buy_flight(self.driver)
     
 
         

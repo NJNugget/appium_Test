@@ -17,7 +17,8 @@ class QYBuy_Process(QYSettings_Android):
         self.util.scroll_screen(self.driver, 500, 500, 700, 70)
         #进入分类页面
         self.util.findElementByText(self.driver,"分类")
-        self.util.findElementByText(self.driver,"酒店")
+        self.util.findElementByText(self.driver,"机票")
 #         self.driver.find_element_by_xpath("//android.widget.ListView/android.widget.LinearLayout/android.widget.FrameLayout").click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODECT_ANDROID).click()
         model = QYBuy_Android()
-        model.Buy(self.driver)
+        model.Buy_flight(self.driver)

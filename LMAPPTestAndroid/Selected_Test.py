@@ -9,6 +9,7 @@ import xPath as GD
 from time import sleep
 from LMAPPUtil.SharedClass import SharedClass_Android
 from LMAPPUtil.Capabilities import QYSettings_Android
+from LMAPPUtil.Buy import QYBuy_Android
 
 
 
@@ -26,3 +27,5 @@ class QYSelected(QYSettings_Android):
         sleep(2)
         self.driver.find_element_by_id(GD.SELECTED_PRODUCT_LEFT_ID_ANDROID).click()
         sleep(3)
+        model = QYBuy_Android()
+        model.Buy(self.driver)
