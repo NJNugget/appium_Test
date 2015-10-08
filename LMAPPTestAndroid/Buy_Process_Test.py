@@ -5,7 +5,7 @@ Created on 2015年9月23日
 
 @author: NJNUGGET
 '''
-import xPath as GD
+import LMAPPUtil.xPath as GD
 from time import sleep
 from LMAPPUtil.Buy import QYBuy_Android
 from LMAPPUtil.Capabilities import QYSettings_Android

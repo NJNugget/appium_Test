@@ -6,7 +6,7 @@ Created on 2015年9月23日
 @author: NJNUGGET
 '''
 from time import sleep
-import xPath as GD
+import LMAPPUtil.xPath as GD
 from LMAPPUtil.Capabilities import QYSettings_iOS
 
 class QYMain(QYSettings_iOS):

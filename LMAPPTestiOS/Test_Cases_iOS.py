@@ -12,6 +12,7 @@ import unittest
 from LMAPPTestiOS.Selected_Test import QYSelected
 from LMAPPTestiOS.Buy_Process_Test import QYBuy_Process
 from LMAPPTestiOS.Mine_Test import QYMine
+from LMAPPTestiOS.MainPage_Test import QYMain
 if __name__ == '__main__':
     suite = unittest.TestLoader().loadTestsFromTestCase(QYBuy_Process)
     unittest.TextTestRunner(verbosity=2).run(suite)

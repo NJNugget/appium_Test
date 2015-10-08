@@ -9,7 +9,7 @@ from time import sleep
 from LMAPPUtil.SharedClass import SharedClass_Android
 from LMAPPUtil.Capabilities import QYSettings_Android
 from appium.webdriver.common.touch_action import TouchAction
-import xPath as GD
+import LMAPPUtil.xPath as GD
 class QYMine(QYSettings_Android):
     
 # ===================================
