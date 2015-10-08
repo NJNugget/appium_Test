@@ -64,12 +64,13 @@ class QYMain(QYSettings_Android):
         for context in contexts:
             print context
         self.driver.find_element_by_xpath(GD.OPREATION_IMAGE_ADNROID).click()
-        sleep(4)
+        sleep(2)
         contexts = self.driver.contexts
         for context in contexts:
             print context
         sleep(3)
-        self.driver.switch_to.context('WEBVIEW_1')
-#         self.driver.context('WEBVIEW_0')
-        self.driver.find_element_by_id("点击领取今日优惠券")
+#         self.driver.switch_to.context('WEBVIEW')
+#         self.driver.switch_to.context('WEBVIEW_0')
+        self.driver.find_element_by_xpath("//android.view.View[@content-desc='分享']").click()
+        sleep(3)
             
