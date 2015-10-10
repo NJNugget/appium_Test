@@ -22,19 +22,28 @@ class QYBuy_Process(QYSettings_iOS):
 # 选择一个有产品的日期
 # 判断是否需要添加旅客，如若不需要，直接点击［提交订单］按钮
 # ===================================
-    def test_buyAtOnce(self):
+#     def test_buyAtOnce(self):
+#         sleep(2)
+#         self.util.scroll_screen(self.driver, 150, 150, 170, 70)
+#         #进入分类页面
+#         self.driver.find_element_by_xpath(GD.CATEGORY_BUTTON_IOS).click()
+#         sleep(2)       
+#         #self.driver.find_element_by_name("酒店").click()
+#         self.driver.find_element_by_xpath(GD.CATEGORY_FLIGHT_IOS).click()
+#         sleep(1)
+#         self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS).click()
+#         model = QYBuy_iOS()
+#         model.Buy_flight(self.driver)
+        
+    def test_buyWifi(self):
         sleep(2)
         self.util.scroll_screen(self.driver, 150, 150, 170, 70)
-        #进入分类页面
-        self.driver.find_element_by_xpath(GD.CATEGORY_BUTTON_IOS).click()
-        sleep(2)       
-        #self.driver.find_element_by_name("酒店").click()
-        self.driver.find_element_by_xpath(GD.CATEGORY_FLIGHT_IOS).click()
-        sleep(1)
-        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS).click()
+        self.driver.find_element_by_xpath(GD.MINE_BUTTON_IOS).click()
+        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[7]").click()
+        sleep(3)
         model = QYBuy_iOS()
-        model.Buy_flight(self.driver)
-        
+        model.Buy_wifi(self.driver)
+           
     
 
         

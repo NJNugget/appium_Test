@@ -71,6 +71,20 @@ class QYBuy_Android(object):
         sleep(2)
         self.util.findElementByText(driver,"提交订单")
         sleep(2)
+    def Buy_wifi(self,driver):
+        print("wifi")
+    def Buy_ticket(self,driver):
+        print("ticket")
+    def Buy_daytrip(self,driver):
+        print("day trip")
+    def Buy_pickup(self,driver):
+        print("pickup&receive")
+    def Buy_chartered(self,driver):
+        print("Chartered")
+    def Buy_hotel(self,driver):
+        print("hotel")
+    def Buy_visa(self,driver):
+        print("visa")
             
 class QYBuy_iOS(object):
     util = iOSUtility()
@@ -129,3 +143,30 @@ class QYBuy_iOS(object):
         sleep(1)
         driver.find_element_by_name("提交订单").click()
         sleep(2)
+    def Buy_wifi(self,driver):
+        print("wifi")
+        els = driver.find_elements_by_xpath("//UIATextField")
+        print(len(els))
+        import LMAPPUtil.Passanger as p
+        els[0].click()
+        els[0].send_keys(p.passanger.name)
+        els[1].click()
+        els[1].send_keys(p.passanger.mobile)
+        self.util.scroll_screen(driver, 100, 100, 100, 20)
+        els[2].click()
+        els[2].send_keys(p.passanger.email)
+        self.util.scroll_screen(driver, 100, 100, 100, 20)
+        els[3].click()
+        els[3].send_keys(p.passanger.weChat)
+    def Buy_ticket(self,driver):
+        print("ticket")
+    def Buy_daytrip(self,driver):
+        print("day trip")
+    def Buy_pickup(self,driver):
+        print("pickup&receive")
+    def Buy_chartered(self,driver):
+        print("Chartered")
+    def Buy_hotel(self,driver):
+        print("hotel")
+    def Buy_visa(self,driver):
+        print("visa")
