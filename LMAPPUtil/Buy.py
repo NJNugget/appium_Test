@@ -146,7 +146,6 @@ class QYBuy_iOS(object):
     def Buy_wifi(self,driver):
         print("wifi")
         els = driver.find_elements_by_xpath("//UIATextField")
-        print(len(els))
         import LMAPPUtil.Passanger as p
         els[0].click()
         els[0].send_keys(p.passanger.name)
@@ -155,9 +154,20 @@ class QYBuy_iOS(object):
         self.util.scroll_screen(driver, 100, 100, 100, 20)
         els[2].click()
         els[2].send_keys(p.passanger.email)
-        self.util.scroll_screen(driver, 100, 100, 100, 20)
         els[3].click()
         els[3].send_keys(p.passanger.weChat)
+        self.util.scroll_screen(driver, 100, 100, 100, 20)
+        driver.find_element_by_name("填写快递信息").click()
+        txts = driver.find_elements_by_xpath("//UIATextField")
+        txts[0].click()
+        txts[0].send_keys(p.passanger.name)
+        txts[1].click()
+        txts[1].send_keys(p.passanger.mobile)
+        txts[2].click()
+        txts[2].send_keys(p.passanger.zipcode)
+        txts[3].click()
+        txts[3].send_keys(p.passanger.address)
+        print("success")
     def Buy_ticket(self,driver):
         print("ticket")
     def Buy_daytrip(self,driver):
