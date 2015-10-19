@@ -46,33 +46,50 @@ class QYBuy_Android(object):
             self.util.findElementByText(driver,"提交订单")
             sleep(2)
             return
-    def Buy_flight(self,driver):
+    def Buy_freetour(self,driver):
         self.util.findElementByText(driver,"立即预订")
         sleep(1)
-        self.util.scroll_screen(driver,500, 300, 500, 200)
-        self.util.findElementByText(driver,"选择日期")
-        sleep(3)    
-        flag = True
-        while(flag == True):
-            self.util.scroll_screen(driver,500,1750,500,1)
-            for i in range(1,7):
-                if(flag==True):
-                    for j in range(1,8):
-                        el = driver.find_element_by_xpath("//android.widget.LinearLayout[%s]/android.view.View[%s]"%(i,j))
-#                         el.click()
-                        if(self.util.activityIsChanged(driver,el)):
-                            flag = False
-                            break
-        self.util.scroll_screen(driver, 500, 1400, 500, 700)
-        self.util.findElementByText(driver, "点击添加新旅客")
-        sleep(1)
-        driver.find_element_by_xpath("//android.widget.CheckBox[1]").click()
+        driver.find_element_by_xpath(GD.PRODUCT_TYPE_ANDROID_4).click()
+        sleep(2)
+        self.util.scroll_screen(driver,500, 1600, 500, 800)
+        self.util.calendar_select(driver)
+        driver.find_element_by_id(GD.CHOOSE_PASSANGER_ANDROID).click()
+        sleep(3)
+        driver.find_element_by_class_name("android.widget.CheckBox").click()
         driver.find_element_by_xpath(GD.ADD_PASSANGER_SUCCESS_ANDROID).click()
-        sleep(2)
-        self.util.findElementByText(driver,"提交订单")
-        sleep(2)
+        self.util.scroll_screen(driver,500, 1600, 500, 800)
+        self.util.findElementByText(driver, "提交订单")
+        sleep(5)
+        
     def Buy_wifi(self,driver):
         print("wifi")
+        self.util.findElementByText(driver,"立即预订")
+        sleep(1)
+        self.util.scroll_screen(driver,500, 1600, 500, 800)
+        self.util.findElementByText(driver, "取设备日期")
+        self.util.findElementByText(driver, "完成")
+        self.util.findElementByText(driver, "还设备日期")
+#         driver.find_element_by_xpath(GD.DATE_PICKER_ANDROID_DAY_AFTER).click()
+        self.util.findElementByText(driver, "完成")
+#         driver.find_element_by_xpath(GD.WIFI_RETURN_TIME_ANDROID).click()
+#         driver.find_element_by_xpath(GD.WIFI_TIME_LIST_ANDROID_2)
+#         self.util.findElementByText(driver, "下一步，填写订单")
+        driver.find_element_by_id(GD.ORDER_SUBMIT_ANDROID_1).click()
+        sleep(3)
+        self.util.scroll_screen(driver, 500, 1600, 500, 200)
+        els = driver.find_elements_by_xpath("//*[@text='选择地点']")
+        els[0].click()
+#         driver.find_element_by_xpath(GD.WIFI_GET_PLACE_ANDROID).click()
+        driver.find_element_by_xpath(GD.WIFI_TIME_LIST_ANDROID_1).click()
+        els[1].click()
+#         driver.find_element_by_xpath(GD.WIFI_RETURN_PLACE_ANDROID).click()
+        driver.find_element_by_xpath(GD.WIFI_TIME_LIST_ANDROID_1).click()
+#         self.util.findElementByText(driver, "填写使用人")
+        driver.find_element_by_xpath(GD.APPLICANT_PEOPLE_ANDROID).click()
+        self.util.inputString(driver, "JIANG", "ZIHAO")
+        self.util.findElementByText(driver, "保存")
+        driver.find_element_by_id(GD.ORDER_SUBMIT_ANDROID_2).click()
+
     def Buy_ticket(self,driver):
         print("ticket")
     def Buy_daytrip(self,driver):
