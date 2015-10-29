@@ -11,6 +11,7 @@ from LMAPPUtil.Capabilities import QYSettings_iOS
 from LMAPPUtil.Buy import QYBuy_iOS
 
 class QYBuy_Process(QYSettings_iOS):
+    model = QYBuy_iOS()
 # ===================================
 # （1）购买流程
 # 滑动屏幕激活
@@ -35,15 +36,78 @@ class QYBuy_Process(QYSettings_iOS):
 #         model = QYBuy_iOS()
 #         model.Buy_flight(self.driver)
         
-    def test_buyWifi(self):
-        sleep(2)
-        self.util.scroll_screen(self.driver, 150, 150, 170, 70)
-        self.driver.find_element_by_xpath(GD.MINE_BUTTON_IOS).click()
-        self.driver.find_element_by_xpath("//UIAApplication[1]/UIAWindow[1]/UIATableView[1]/UIATableCell[7]").click()
+    def test_freetour(self):
+        print("freetour/flight/ship")
         sleep(3)
-        model = QYBuy_iOS()
-        model.Buy_wifi(self.driver)
-           
-    
+        self.driver.find_element_by_xpath(GD.MAIN_CATEGORY_IOS_FREETOUR).click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS_1).click()
+        sleep(13)
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS) 
+        self.model.Buy_freetour(self.driver)
+    def test_buyWifi(self):
+        print("wifi")
+        sleep(3)
+        self.driver.find_element_by_xpath(GD.MAIN_CATEGORY_IOS_CITYFUN).click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS_4).click()
+        sleep(13)
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS) 
+        self.model.Buy_wifi(self.driver)
+    def test_buyTicket(self):
+        print("ticket")
+        sleep(3)
+        self.driver.find_element_by_xpath(GD.MAIN_CATEGORY_IOS_CITYFUN).click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS_6).click()
+        sleep(13)
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS)
+        self.model.Buy_ticket(self.driver)
+    def test_buyDaytrip(self):
+        print("daytrip")
+        sleep(3)
+        self.driver.find_element_by_xpath(GD.MAIN_CATEGORY_IOS_CITYFUN).click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS_6).click()
+        sleep(13)
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS) 
+        self.model.Buy_daytrip(self.driver)  
+    def test_buyPickup(self):
+        print("pickup")
+        sleep(3)
+        self.driver.find_element_by_xpath(GD.MAIN_CATEGORY_IOS_CITYFUN).click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS_5).click()
+        sleep(13)
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS) 
+        self.model.Buy_pickup(self.driver)
+    def test_buyReceive(self):
+        print("receive")
+        sleep(3)
+        self.driver.find_element_by_xpath(GD.MAIN_CATEGORY_IOS_CITYFUN).click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS_5).click()
+        sleep(13)
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS) 
+        self.model.Buy_receive(self.driver)
+    def test_buyChartered(self):
+        print("chartered")
+        sleep(3)
+        self.driver.find_element_by_xpath(GD.MAIN_CATEGORY_IOS_CITYFUN).click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS_5).click()
+        sleep(13)
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS) 
+        self.model.Buy_chartered(self.driver)
+    def test_buyHotel(self):
+        print("hotel")
+        sleep(3)
+        self.driver.find_element_by_xpath(GD.MAIN_CATEGORY_IOS_CITYFUN).click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS_2).click()
+        sleep(13)
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS)
+        self.model.Buy_hotel(self.driver)
+    def test_buyVisa(self):
+        print("visa")
+        sleep(3)
+        self.driver.find_element_by_xpath(GD.MAIN_CATEGORY_IOS_CITYFUN).click()
+        self.driver.find_element_by_xpath(GD.SALE_PRODUCT_IOS_3).click()
+        sleep(13)
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS)
+        self.model.Buy_visa(self.driver) 
+
 
         

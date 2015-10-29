@@ -10,8 +10,10 @@ import os
 from appium import webdriver
 from LMAPPUtil.Utility import AndroidUtility, iOSUtility
 
+
 class QYSettings_Android(unittest.TestCase):
     util = AndroidUtility()
+
     def setUp(self):
         # set up appium
         desired_caps = {}
@@ -19,13 +21,19 @@ class QYSettings_Android(unittest.TestCase):
         desired_caps['platformName'] = 'Android'
         desired_caps['platformVersion'] = '4.3'
         desired_caps['deviceName'] = 'Nexus 5'
-        desired_caps['app'] = os.path.abspath('/Users/NJNUGGET/Documents/Python/WorkSpace/AndroidTestApp/aLAST.apk')
-        self.driver = webdriver.Remote('http://172.1.7.54:3000/wd/hub', desired_caps)
+        desired_caps['app'] = os.path.abspath(
+            '/Users/NJNUGGET/Documents/Python/WorkSpace/AndroidTestApp/aLAST.apk')
+        self.driver = webdriver.Remote(
+            'http://172.1.7.54:3000/wd/hub', desired_caps)
         self.driver.implicitly_wait(10)
+
     def tearDown(self):
         self.driver.quit()
+
+
 class QYSettings_iOS(unittest.TestCase):
     util = iOSUtility()
+
     def setUp(self):
         # set up appium
         desired_caps = {}
@@ -34,7 +42,9 @@ class QYSettings_iOS(unittest.TestCase):
         desired_caps['platformVersion'] = '8.3'
         desired_caps['deviceName'] = 'iPhone 6'
 
-        self.driver = webdriver.Remote('http://172.1.7.54:3000/wd/hub', desired_caps)
+        self.driver = webdriver.Remote(
+            'http://172.1.7.54:3000/wd/hub', desired_caps)
         self.driver.implicitly_wait(20)
+
     def tearDown(self):
         self.driver.quit()
