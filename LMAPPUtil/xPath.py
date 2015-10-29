@@ -54,10 +54,6 @@ SORT_BUTTON_ID_ANDROID = "com.qyer.android.lastminute:id/ivOrderType"
 CHOOSE_PASSANGER_ANDROID = "com.qyer.android.lastminute:id/rlRightContent"
 ORDER_SUBMIT_ANDROID_1 = "com.qyer.android.lastminute:id/bt_order_submit"
 ORDER_SUBMIT_ANDROID_2 = "com.qyer.android.lastminute:id/tvSubmitOrder"
-# ===================================
-# IOS精确点击脚本
-# ===================================
-SUBMIT_ORDER_script_ANDROID = (911, 1713)
 
 # ===================================
 # IOS控件xPath地址
