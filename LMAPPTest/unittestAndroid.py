@@ -11,6 +11,9 @@ from appium import webdriver
 from time import sleep
 from appium.webdriver.common.touch_action import TouchAction
 import xPath as GD
+from SharedClass import SharedClass
+from LMAPPUtil.Utility import AndroidUtility
+
 class QYLM171AndroidTests(unittest.TestCase):
 # ===================================
 #     通用功能
@@ -20,7 +23,7 @@ class QYLM171AndroidTests(unittest.TestCase):
 #     4、输入文本
 #     5、判断activity是否改变
 # ===================================
-
+    
     def setUp(self):
         # set up appium
         desired_caps = {}
@@ -34,14 +37,6 @@ class QYLM171AndroidTests(unittest.TestCase):
     def tearDown(self):
         self.driver.quit()
         #self.driver.find_element_by_name(name)    
-    def scroll_screen(self,x1,y1,x2,y2):
-    #TouchAction(self.driver).press(x=x1,y=y1).move_to(x=x2,y=y2).release().perform()
-        self.driver.swipe(x1, y1, x2, y2, 1000)
-        sleep(1)
-    #findElementByText_method   
-    def findElementByText(self,text):
-        self.driver.find_element_by_xpath("//*[@text='%s']"%text).click()
-        sleep(1)
     #inputYHPinfo
     def inputString(self,text1,text2=""):
         elm = self.driver.find_elements_by_xpath(GD.EIDTTEXT_ANDROID)
@@ -83,14 +78,14 @@ class QYLM171AndroidTests(unittest.TestCase):
     def test_addYHP(self):
         sleep(8)
         #滑动屏幕用以显示更多
-        self.scroll_screen(500, 500, 700, 70)
+        self.util.scroll_screen(self.driver, 500, 500, 700, 70)
         #进入分类页面
-        self.findElementByText("我的")
-        self.findElementByText("我的优惠")
-        self.findElementByText("添加优惠券")
+        self.util.findElementByText(self.driver,"我的")
+        self.util.findElementByText(self.driver,"我的优惠")
+        self.util.findElementByText(self.driver,"添加优惠券")
         #输入优惠券信息
-        self.inputString("YHP0009300002785", "123962")
-        self.findElementByText("加入我的优惠券")
+        self.inputString(self.driver,"YHP0009300002785", "123962")
+        self.util.findElementByText(self.driver,"加入我的优惠券")
 # ===================================
 # （2）登录登出
 # 滑动屏幕激活
@@ -102,9 +97,9 @@ class QYLM171AndroidTests(unittest.TestCase):
     def test_logIn(self):
         sleep(8)
         #滑动屏幕用以显示更多
-        self.scroll_screen(500, 500, 700, 70)
+        self.util.scroll_screen(self.driver,500, 500, 700, 70)
         #进入分类页面
-        self.findElementByText("我的")
+        self.util.findElementByText(self.driver,"我的")
         els = self.driver.find_elements_by_xpath("//*[@clickable='true']")
         before = self.driver.current_activity
 #         print(before)
@@ -114,7 +109,7 @@ class QYLM171AndroidTests(unittest.TestCase):
 #         print(after)
         if(before == after):
             els[2].click()
-            self.findElementByText("确定")
+            self.util.findElementByText(self.driver,"确定")
             els[1].click()
             #     wd.find_element_by_xpath("//*[@clickable='true']").click()
         self.inputString("1234", "1234")
@@ -136,16 +131,16 @@ class QYLM171AndroidTests(unittest.TestCase):
     def test_buyAtOnce(self):
         sleep(8)
         #滑动屏幕用以显示更多
-        self.scroll_screen(500, 500, 700, 70)
+        self.util.scroll_screen(self.driver, 500, 500, 700, 70)
         #进入分类页面
-        self.findElementByText("分类")
-        self.findElementByText("酒店")
+        self.util.findElementByText(self.driver,"分类")
+        self.util.findElementByText(self.driver,"酒店")
 #         self.driver.find_element_by_xpath("//android.widget.ListView/android.widget.LinearLayout/android.widget.FrameLayout").click()
         self.driver.find_element_by_xpath(GD.SALE_PRODECT_ANDROID).click()
-        self.findElementByText("立即预订")
+        self.util.findElementByText(self.driver,"立即预订")
         sleep(1)
-        self.scroll_screen(500, 300, 500, 200)
-        self.findElementByText("选择日期")
+        self.util.scroll_screen(self.driver,500, 300, 500, 200)
+        self.util.findElementByText(self.driver,"选择日期")
             
         flag = True
         while(flag == True):
@@ -157,7 +152,7 @@ class QYLM171AndroidTests(unittest.TestCase):
                         if(self.activityIsChanged(el)):
                             flag = False
                             break
-        self.findElementByText("提交订单")
+        self.util.findElementByText(self.driver,"提交订单")
 # ===================================
 # （4）查询订单
 # 滑动屏幕激活
@@ -170,8 +165,8 @@ class QYLM171AndroidTests(unittest.TestCase):
         #滑动屏幕用以显示更多
         self.scroll_screen(500, 500, 700, 70)
         #进入我的页面
-        self.findElementByText("我的")
-        self.findElementByText("我的订单")
+        self.util.findElementByText(self.driver,"我的")
+        self.util.findElementByText(self.driver,"我的订单")
         #查看待付款和申请退款中
         self.scroll_screen(900, 1000, 100, 1000)
         sleep(1)
@@ -188,14 +183,14 @@ class QYLM171AndroidTests(unittest.TestCase):
         #滑动屏幕用以显示更多
         self.scroll_screen(500, 500, 700, 70)
         #进入我的收藏页面
-        self.findElementByText("我的")
-        self.findElementByText("我的收藏")
+        self.util.findElementByText(self.driver,"我的")
+        self.util.findElementByText(self.driver,"我的收藏")
         #长按第一个收藏，并点击删除
         action1 = TouchAction(self.driver)  
 #         el = self.driver.find_element_by_xpath("//android.widget.LinearLayout[1]/android.widget.FrameLayout[1]/android.widget.RelativeLayout[1]/android.widget.FrameLayout[1]/android.widget.FrameLayout[1]/android.widget.ListView[1]/android.widget.FrameLayout[1]")
         el = self.driver.find_element_by_id(GD.COLLECT_PRODUCT_ID_ANDROID)
         action1.long_press(el).wait(1500).perform()
-        self.findElementByText("确定")
+        self.util.findElementByText(self.driver,"确定")
 # ===================================
 # （6）添加删除提醒
 # 滑动屏幕激活
@@ -212,18 +207,18 @@ class QYLM171AndroidTests(unittest.TestCase):
         #滑动屏幕用以显示更多
         self.scroll_screen(500, 500, 700, 70)
         #进入我的提醒页面
-        self.findElementByText("我的")
-        self.findElementByText("我的提醒")
+        self.util.findElementByText(self.driver,"我的")
+        self.util.findElementByText(self.driver,"我的提醒")
         els = self.driver.find_elements_by_xpath(GD.NOTICE_IMAGE_ANDROID)
         els[1].click()
         sleep(1)
-        self.findElementByText("折扣类型")
-        self.findElementByText("机票")
-        self.findElementByText("确定")
+        self.util.findElementByText(self.driver,"折扣类型")
+        self.util.findElementByText(self.driver,"机票")
+        self.util.findElementByText(self.driver,"确定")
         sleep(3)
         self.driver.find_element_by_id(GD.NOTICE_DELETE_ID_ANDROID).click()
         sleep(2)
-        self.findElementByText("确定")
+        self.util.findElementByText(self.driver,"确定")
 # ===================================
 # （7）选择穷游精选
 # 滑动屏幕激活
@@ -235,7 +230,7 @@ class QYLM171AndroidTests(unittest.TestCase):
         #滑动屏幕用以显示更多
         self.scroll_screen(500, 500, 700, 70)
         #进入我的提醒页面
-        self.findElementByText("穷游精选")
+        self.util.findElementByText(self.driver,"穷游精选")
         sleep(5)
 #         self.driver.find_element_by_xpath("//android.widget.ListView[1]/android.widget.FrameLayout[1]").click()
         self.driver.find_element_by_xpath(GD.SELECTED_PRODUCT_ANDROID).click()
@@ -253,7 +248,7 @@ class QYLM171AndroidTests(unittest.TestCase):
         #滑动屏幕用以显示更多
         self.scroll_screen(500, 500, 700, 70)
         self.driver.find_element_by_id(GD.SEARCH_IMAGE_ID_ANDROID).click()
-        self.findElementByText("日本")
+        self.util.findElementByText(self.driver,"日本")
         sleep(3)
 # ===================================
 # （9）排序功能
@@ -268,10 +263,10 @@ class QYLM171AndroidTests(unittest.TestCase):
         #滑动屏幕用以显示更多
         self.scroll_screen(500, 500, 700, 70)
         #进入分类页面
-        self.findElementByText("分类")
-        self.findElementByText("酒店")
+        self.util.findElementByText(self.driver,"分类")
+        self.util.findElementByText(self.driver,"酒店")
         self.driver.find_element_by_id(GD.SORT_BUTTON_ID_ANDROID).click()
-        self.findElementByText("价格从低到高")
+        self.util.findElementByText(self.driver,"价格从低到高")
         sleep(3)
     
         
@@ -340,17 +335,17 @@ class QYLM172AndroidTests(unittest.TestCase):
         #滑动屏幕用以显示更多
         self.scroll_screen(500, 500, 700, 70)
         #进入我的页面
-        self.findElementByText("我的")
-        self.findElementByText("我的订单")
+        self.util.findElementByText(self.driver,"我的")
+        self.util.findElementByText(self.driver,"我的订单")
         sleep(1)
         flag = True
         while(flag == True):
             try:
-                self.findElementByText("订单关闭")
+                self.util.findElementByText(self.driver,"订单关闭")
                 sleep(3)
-                self.findElementByText("删除订单")
+                self.util.findElementByText(self.driver,"删除订单")
                 sleep(1)
-                self.findElementByText("确定")
+                self.util.findElementByText(self.driver,"确定")
                 sleep(2)
                 flag = False
             except:
@@ -371,7 +366,7 @@ class QYLM172AndroidTests(unittest.TestCase):
         self.driver.find_element_by_id(GD.IRREGULAR_IMAGE_1_ID_ANDROID).click()
         sleep(2)
         try:
-            self.findElementByText("回复楼主")
+            self.util.findElementByText(self.driver,"回复楼主")
             inputEdit = self.driver.find_elements_by_class_name("android.widget.EditText")
             inputEdit[0].click()
             inputEdit[0].send_keys("This is a test")
@@ -379,8 +374,46 @@ class QYLM172AndroidTests(unittest.TestCase):
             sleep(3)
         except:
             print("此处不是帖子")
+            
+class QYLM173AndroidTests(unittest.TestCase):
+    util = AndroidUtility()
+    def setUp(self):
+        # set up appium
+        desired_caps = {}
+        desired_caps['appium-version'] = '1.0'
+        desired_caps['platformName'] = 'Android'
+        desired_caps['platformVersion'] = '4.3'
+        desired_caps['deviceName'] = 'Nexus 5'
+        desired_caps['app'] = os.path.abspath('/Users/NJNUGGET/Documents/Python/WorkSpace/AndroidTestApp/aLAST.apk')
+        self.driver = webdriver.Remote('http://172.1.7.54:3000/wd/hub', desired_caps)
+        self.driver.implicitly_wait(10)
+    def tearDown(self):
+        self.driver.quit()
+        #self.driver.find_element_by_name(name)    
+    
+        
+# ===================================
+#     V1.7.3测试用例
+#     1、商铺页面
+#     2、咨询功能
+# ===================================
+# ===================================
+# ===================================
+# ===================================
+    def test_share(self):
+        sleep(3)
+        self.util.scroll_screen(self.driver, 500, 500, 700, 70)
+#         sleep(2)
+        self.driver.find_element_by_xpath(GD.OPREATION_IMAGE_ADNROID).click()
+        self.driver.find_element_by_xpath(GD.SHARE_TOPIC_BUTTON_ANDROID).click()
+        share = SharedClass()
+        share.sharedWeibo(self.driver)
+        sleep(3)
+
 if __name__ == '__main__':
-    suite171 = unittest.TestLoader().loadTestsFromTestCase(QYLM171AndroidTests)
-    unittest.TextTestRunner(verbosity=2).run(suite171)
-    suite172 = unittest.TestLoader().loadTestsFromTestCase(QYLM172AndroidTests)
-    unittest.TextTestRunner(verbosity=2).run(suite172)
+#     suite171 = unittest.TestLoader().loadTestsFromTestCase(QYLM171AndroidTests)
+#     unittest.TextTestRunner(verbosity=2).run(suite171)
+#     suite172 = unittest.TestLoader().loadTestsFromTestCase(QYLM172AndroidTests)
+#     unittest.TextTestRunner(verbosity=2).run(suite172)
+    suite173 = unittest.TestLoader().loadTestsFromTestCase(QYLM173AndroidTests)
+    unittest.TextTestRunner(verbosity=2).run(suite173)

@@ -24,7 +24,7 @@ class QYSettings_Android(unittest.TestCase):
         desired_caps['app'] = os.path.abspath(
             '/Users/NJNUGGET/Documents/Python/WorkSpace/AndroidTestApp/aLAST.apk')
         self.driver = webdriver.Remote(
-            'http://172.1.7.54:3000/wd/hub', desired_caps)
+            'http://172.16.33.57:3000/wd/hub', desired_caps)
         self.driver.implicitly_wait(10)
 
     def tearDown(self):
@@ -43,7 +43,7 @@ class QYSettings_iOS(unittest.TestCase):
         desired_caps['deviceName'] = 'iPhone 6'
 
         self.driver = webdriver.Remote(
-            'http://172.1.7.54:3000/wd/hub', desired_caps)
+            'http://172.16.33.57:3000/wd/hub', desired_caps)
         self.driver.implicitly_wait(20)
 
     def tearDown(self):
