@@ -273,7 +273,7 @@ class QYBuy_iOS(object):
             driver.find_element_by_name("提交订单").click()
             sleep(2) 
     def Buy_freetour(self,driver):
-        driver.find_element_by_xpath(GD.PRODUCT_TYPE_IOS_2).click()
+        driver.find_element_by_xpath(GD.PRODUCT_TYPE_IOS_4).click()
         sleep(3)
         dates = driver.find_elements_by_xpath(GD.CALENDAR_BUTTON_FREETOUR_IOS)
         print(len(dates))
@@ -286,6 +286,13 @@ class QYBuy_iOS(object):
             #         scroll_screen(200, 500, 200, 300)
         driver.find_element_by_name("Fill New Order Normal").click()
         sleep(1)
+#         driver.find_element_by_name("旅客1 *").click()
+        self.util.findElementByContent(driver, "旅客1")
+        els = driver.find_elements_by_name("check Icon Normol")
+        if len(els)>0:
+            els[0].click()
+        else:
+            print("need to add passanger")
         driver.find_element_by_name("提交订单").click()
         sleep(5)
     def Buy_wifi(self,driver):
@@ -456,7 +463,7 @@ class QYBuy_iOS(object):
         self.util.scroll_screen(driver, 200, 300, 200, 100)
         driver.find_element_by_name("选择日期").click()
         self.util.preciseTap(driver, GD.SUBMIT_DATE_TICKET_script_IOS)
-        driver.find_element_by_name("申请人1 *").click()
+        driver.find_element_by_name("申请人1").click()
         els = driver.find_elements_by_xpath("//UIATextField")
         import LMAPPUtil.Passanger as p
         els[0].click()
@@ -482,3 +489,15 @@ class QYBuy_iOS(object):
         driver.find_element_by_name("保存").click()
         driver.find_element_by_name("提交订单").click()
         sleep(5)
+    def Buy_199(self,driver):
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS)
+        sleep(2)
+        driver.find_element_by_xpath(GD.SET_LIST_2_IOS).click()
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS)
+        self.util.preciseTap(self.driver, GD.SUBMIT_ORDER_script_IOS)
+        sleep(2)
+        driver.find_element_by_name("Common Back").click()
+        driver.find_element_by_name("稍后支付").click()
+        sleep(2)
+        driver.find_element_by_name("Common Back").click()
+        sleep(2)

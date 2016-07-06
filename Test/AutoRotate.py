@@ -27,7 +27,8 @@ data_login = {'password':'',
                          'remember':'1'}
 
 def login(data):
-    url = 'http://login.qyer.com/qcross/login/auth.php?action=login'
+#     url = 'http://login.qyer.com/qcross/login/auth.php?action=login'
+    url = 'http://login.qyer.com/qcross/login/auth.php?action=logincheck'
     r1 = requests.post(url,data=data,headers=headers)
     url = r1.json()['data']['arr_synlogin'][0]
     #print(url)

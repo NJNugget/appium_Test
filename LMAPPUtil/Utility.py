@@ -72,8 +72,8 @@ class iOSUtility():
     #TouchAction(self.driver).press(x=x1,y=y1).move_to(x=x2,y=y2).release().perform()
         driver.swipe(x1, y1, x2, y2, 1000)
         sleep(1)
-#     def webViewFindElement(self,driver,text):
-#         driver.find_element_by_xpath("//android.view.View[contains(@content-desc,'%s')]"%text).click()
+    def findElementByContent(self,driver,text):
+        driver.find_element_by_xpath("//*[contains(@name,'%s')]"%text).click()
     def calendar_Select(self,driver):
         dates = driver.find_elements_by_xpath("//UIATableCell[@name='出发日期']/UIAButton")
         print(len(dates))

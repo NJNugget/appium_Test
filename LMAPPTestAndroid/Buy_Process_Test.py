@@ -25,7 +25,7 @@ class QYBuy_Process(QYSettings_Android):
     model = QYBuy_Android()
     def test_Buy_FreeTour(self):
         sleep(8)
-        self.util.findElementByText(self.driver,"自由行")
+        self.util.findElementByText(self.driver,"机+酒")
         self.driver.find_element_by_xpath(GD.SALE_PRODUCT_ANDROID_1).click()
         self.util.findElementByText(self.driver,"立即预订")
         self.model.Buy_freetour(self.driver)
